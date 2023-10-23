@@ -20,7 +20,6 @@
 
     <script src="/dashboard/javascripts/modernizr.js" type="text/javascript"></script>
 
-    <link href="images/vecteezy_blue-energy-thunder-lightning-bolt-symbol-or-electricity_20785841_185.png" rel="icon" type="image/png" />
 </head>
 
 <body>
