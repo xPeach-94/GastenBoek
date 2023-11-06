@@ -1,0 +1,12 @@
+.container-fluid {
+    background: url('images/book_cover.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.container-fluid h1 {
+    color: #fff;
+    text-align: center;
+}
