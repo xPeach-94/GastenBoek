@@ -7,16 +7,16 @@ ini_set('display_errors', 1);
 // functie file wegschrijven
 // functie file ophalen
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $file = "js/guests.js";
-        $currentContents = file_get_contents($file);
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //     $file = "js/guests.js";
+    //     $currentContents = file_get_contents($file);
 
-        $prettyJsonString = json_encode($_POST, JSON_PRETTY_PRINT);
+    //     $prettyJsonString = json_encode($_POST, JSON_PRETTY_PRINT);
 
-        $currentContents .= $prettyJsonString . "\n";
+    //     $currentContents .= $prettyJsonString . "\n";
 
-        file_put_contents($file, $currentContents);  
-        }
+    //     file_put_contents($file, $currentContents);  
+    //     }
         
 
         // echo "<pre>";
@@ -97,6 +97,7 @@ ini_set('display_errors', 1);
                                 suscipit! Optio adipisci veritatis animi nemo provident molestias voluptas perferendis voluptatem vero, deserunt alias 
                                 ipsum blanditiis culpa eligendi consectetur. Itaque, modi. Unde voluptatum placeat at sed asperiores?
                             </p>
+                            <img src="images/delete.png" alt="delete">
                         </div>
                     </div>
                     <div class="older-messages">
@@ -112,6 +113,7 @@ ini_set('display_errors', 1);
                                     excepturi deserunt quidem natus voluptates animi quo deleniti qui alias necessitatibus totam non tenetur temporibus 
                                     eaque tempora ad minus atque nobis dignissimos nostrum dicta, perferendis ducimus sapiente.
                                 </p>
+                                <img src="images/delete.png" alt="delete">
                             </div>
                             <div class="message-box">
                                 <h4>Mohammed</h4>
@@ -126,14 +128,12 @@ ini_set('display_errors', 1);
                                     iusto natus tenetur amet laborum harum modi minima! Fugiat praesentium error libero culpa fuga? Quo magni quaerat 
                                     eligendi quae ratione ea.
                                 </p>
+                                <img src="images/delete.png" alt="delete">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer>
-
-            </footer>
         </div>
     </body>
 </html>
