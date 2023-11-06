@@ -1,3 +1,13 @@
+<?php
+ini_set('display_errors', 1);
+// echo "<pre>";
+// var_dump($_SERVER);
+// echo "/pre"
+
+// functie file wegschrijven
+// functie file ophalen
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +30,35 @@
 
     <script src="/dashboard/javascripts/modernizr.js" type="text/javascript"></script>
 
-    <link href="images/vecteezy_blue-energy-thunder-lightning-bolt-symbol-or-electricity_20785841_185.png" rel="icon" type="image/png" />
 </head>
 
 <body>
+    <form method="post">
+        <h1>Naam:</h1>
+        <input type="text" name="name" id="name">
+
+        <h1>Bericht:</h1>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $file = "guests.js";
+        $currentContents = file_get_contents($file);
+
+        $prettyJsonString = json_encode($_POST, JSON_PRETTY_PRINT);
+
+        $currentContents .= $prettyJsonString . "\n";
+
+        file_put_contents($file, $currentContents);
+
+        // echo "<pre>";
+        // var_dump($currentContents);
+        // echo "</pre>";
+    }
+    ?>
 
 </body>
 
