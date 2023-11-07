@@ -8,19 +8,19 @@ ini_set('display_errors', 1);
 $messageArr = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // echo "<pre>";
-    // var_dump($_POST["name"], $_POST["message"]);
-    // echo "</pre>";
+    $name = $_POST["name"];
+    $message = $_POST["message"];
 
-    // $jsonFormat = [$_POST["name"] => $_POST["message"]];
-
-    writeFile($_POST, $messageArr);
-    // writeFile($_POST);
+    if (!empty($name) && !empty($message)) {
+        writeFile($name, $message);
+    } else {
+        echo "Please enter both name and message.";
+    }
 }
 
-echo "<pre>";
-var_dump(file_get_contents("guests.txt"));
-echo "</pre>";
+// echo "<pre>";
+// var_dump(file_get_contents("guests.txt"));
+// echo "</pre>";
 
 class Message
 {
@@ -29,8 +29,8 @@ class Message
 
     public function __construct($name, $message)
     {
-        $this -> setName($name);
-        $this -> setMessage($message);
+        $this->setName($name);
+        $this->setMessage($message);
     }
 
     public function setName($name)
@@ -54,42 +54,33 @@ class Message
     }
 }
 
-function writeFile($post, $messageArr)
+function writeFile($name, $message)
 {
+    $jsonCurrentMessages = file_get_contents('guests.txt');
+    $currentMessageArray = json_decode($jsonCurrentMessages, true);
+
+    $newMessage = new Message($name, $message);
+    $messages[] = $newMessage;
+
+    $messageArray = array();
+
+    foreach ($messages as $msg) {
+        $messageArray[] = array(
+            'name' => $msg->getName(),
+            'message' => $msg->getMessage()
+        );
+    }
+
+    $newArr = array_merge($currentMessageArray, $messageArray);
+
+    $jsonMessages = json_encode($newArr, JSON_PRETTY_PRINT);
+
+    file_put_contents('guests.txt', $jsonMessages);
+
     // echo "<pre>";
-    // var_dump($post);
+    // var_dump($currentMessageArray, $messageArray);
     // echo "</pre>";
-
-    $message = new Message($post["name"], $post["message"]);
-
-    array_push($messageArr, [$message->getName(), $message->getMessage()]);
-
-    echo "<pre>";
-    var_dump($messageArr);
-    echo "</pre>";
 }
-
-// function writeFile($jsonFormat)
-// {
-//     // echo "<pre>";
-//     // var_dump($jsonFormat, $messageArr);
-//     // echo "</pre>";
-
-//     $file = "guests.txt";
-
-//     $currentContents = file_get_contents($file);
-
-//     $prettyJsonString = json_encode($jsonFormat, JSON_PRETTY_PRINT);
-
-//     $currentContents .= $prettyJsonString . ",\n";
-
-//     file_put_contents($file, $currentContents);
-
-//     // echo "<pre>";
-//     // var_dump();
-//     // echo "</pre>";
-
-// }
 ?>
 
 <!DOCTYPE html>
