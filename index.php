@@ -71,7 +71,7 @@ function writeFile($name, $message)
         );
     }
 
-    $newArr = array_merge($currentMessageArray, $messageArray);
+    $newArr = array_merge($messageArray, $currentMessageArray);
 
     $jsonMessages = json_encode($newArr, JSON_PRETTY_PRINT);
 
