@@ -1,27 +1,91 @@
 <?php
-ini_set('display_errors', 1);
-// echo "<pre>";
-// var_dump($_SERVER);
-// echo "/pre"
+    ini_set('display_errors', 1);
 
-// functie file wegschrijven
-// functie file ophalen
-
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //     $file = "js/guests.js";
-    //     $currentContents = file_get_contents($file);
-
-    //     $prettyJsonString = json_encode($_POST, JSON_PRETTY_PRINT);
-
-    //     $currentContents .= $prettyJsonString . "\n";
-
-    //     file_put_contents($file, $currentContents);  
-    //     }
-        
-
+    // functie file wegschrijven
+    // functie file ophalen
+    // functie verwijderen
+    
+    $messageArr = [];
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST["name"];
+        $message = $_POST["message"];
+    
+        if (!empty($name) && !empty($message)) {
+            writeFile($name, $message);
+        } else {
+            echo "Please enter both name and message.";
+        }
+    }
+    
+    // echo "<pre>";
+    // var_dump(file_get_contents("guests.txt"));
+    // echo "</pre>";
+    
+    class Message
+    {
+        private $name;
+        private $message;
+    
+        public function __construct($name, $message)
+        {
+            $this->setName($name);
+            $this->setMessage($message);
+        }
+    
+        public function setName($name)
+        {
+            $this->name = $name;
+        }
+    
+        public function getName(): string
+        {
+            return $this->name;
+        }
+    
+        public function setMessage($message)
+        {
+            $this->message = $message;
+        }
+    
+        public function getMessage(): string
+        {
+            return $this->message;
+        }
+    }
+    
+    function writeFile($name, $message)
+    {
+        $jsonCurrentMessages = file_get_contents('guests.txt');
+        $currentMessageArray = json_decode($jsonCurrentMessages, true);
+    
+        $newMessage = new Message($name, $message);
+        $messages[] = $newMessage;
+    
+        $messageArray = array();
+    
+        foreach ($messages as $msg) {
+            $messageArray[] = array(
+                'name' => $msg->getName(),
+                'message' => $msg->getMessage()
+            );
+        }
+    
+        if (!empty($currentMessageArray)) {
+            $newArr = array_merge($messageArray, $currentMessageArray);
+        } else {
+            $newArr = $messageArray;
+        }
+    
+    
+        $jsonMessages = json_encode($newArr, JSON_PRETTY_PRINT);
+    
+        file_put_contents('guests.txt', $jsonMessages);
+    
         // echo "<pre>";
-        // var_dump($currentContents);
+        // var_dump($currentMessageArray, $messageArray);
         // echo "</pre>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +146,7 @@ ini_set('display_errors', 1);
                 <div class="divider"></div>
                 <div class="message-grid">
                     <div class="latest-message">
-                        <h3>Het laatst geplaatste bericht</h3>
+                        <h3>Meest recente bericht</h3>
                         <div class="message-box">
                             <h4>Dominick</h4>
                             <p>

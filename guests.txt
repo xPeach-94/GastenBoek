@@ -1,0 +1,6 @@
+[
+    {
+        "name": "Dominick",
+        "message": "Dit is een testbericht"
+    }
+]
