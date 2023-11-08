@@ -1,14 +1,6 @@
 [
     {
-        "name": "third",
-        "message": "earnaeornaieg"
-    },
-    {
-        "name": "second",
-        "message": "argaergaeighu"
-    },
-    {
-        "name": "first",
-        "message": "aroaernaegb"
+        "name": "Dominick",
+        "message": "Dit is een testbericht"
     }
 ]
