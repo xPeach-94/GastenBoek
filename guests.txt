@@ -1,6 +1,14 @@
 [
     {
+        "name": "Mohammed",
+        "message": "test789"
+    },
+    {
+        "name": "Sabrina",
+        "message": "test456"
+    },
+    {
         "name": "Dominick",
-        "message": "Dit is een testbericht"
+        "message": "Test123"
     }
 ]

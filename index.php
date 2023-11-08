@@ -14,7 +14,7 @@
         if (!empty($name) && !empty($message)) {
             writeFile($name, $message);
         } else {
-            echo "Please enter both name and message.";
+            $errMsg = "Het invullen van een naam en bericht is verplicht.";
         }
     }
     
@@ -122,6 +122,15 @@
 
     </head>
     <body>
+        <?php 
+            $test = file_get_contents('guests.txt');
+            $testArr =  json_decode($test, true);
+            foreach($testArr as $item) {
+                echo array_keys($testArr);
+                echo $item['name'] . '<br>';
+                echo $item['message'] . '<br>';
+            } 
+        ?>
         <div class="container">
             <header>
                 <h1>gastenboek</h1>
@@ -132,12 +141,14 @@
                     <h2>Schrijf hier uw naam en bericht</h2>
                     <form action="" method="POST">
                         <div class="form-group mt-3">
-                            <input class="form-control form-control-lg" type="text" name="name" value="{name}" placeholder="Naam:">
+                            <input class="form-control form-control-lg" type="text" name="name" placeholder="Naam:">
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control form-control-lg" name="message">{message}</textarea>
+                            <textarea class="form-control form-control-lg" name="message" placeholder="Bericht:"></textarea>
                             <div class="form-text">
-                                <h5>Het bericht mag maar maximaal 500 characters bevatten.</h5>
+                                <?php if(isset($errMsg)) {
+                                    echo '<h5>' . $errMsg . '</h5>';
+                                } ?>
                             </div>
                         </div>
                         <button class="btn btn-success" type="submit" name="add">Toevoegen</button>
@@ -167,7 +178,16 @@
                     <div class="older-messages">
                         <h3>Oudere berichten</h3>
                         <div class="flex">
-                            <div class="message-box">
+                            <?php $messages = file_get_contents('guests.txt');
+                                $messageArray = json_decode($messages, true);
+                                foreach($messageArray as $message): ?>
+                                    <div class="message-box">
+                                        <h4><?= $message['name']; ?></h4>
+                                        <p><?= $message['message']; ?></p>
+                                        <img src="images/delete.png" alt="Verwijderen">
+                                    </div>
+                            <?php endforeach; ?>
+                            <!-- <div class="message-box">
                                 <h4>Sabrina</h4>
                                 <p>
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ad at suscipit distinctio, nesciunt molestiae excepturi? 
@@ -193,7 +213,7 @@
                                     eligendi quae ratione ea.
                                 </p>
                                 <img src="images/delete.png" alt="delete">
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

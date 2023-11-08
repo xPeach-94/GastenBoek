@@ -68,13 +68,14 @@ form textarea {
 }
 
 .form-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    color: red;
 }
 
 form button {
     position: absolute;
     right: 0;
-    bottom: 50px;
+    bottom: 20px;
     background-color: lightgreen;
     border: none;
     border-radius: 5px;
