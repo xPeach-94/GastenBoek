@@ -1,0 +1,143 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, a {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: url('../images/bg.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.divider {
+    background-color: #000;
+    width: 100%;
+    height: 2px;
+}
+
+.message-form {
+    position: relative;
+    padding: 40px 0 80px 0;
+}
+
+.message-form h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    font-size: 1.3rem;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 8px;
+}
+
+form textarea {
+    height: 250px;
+}
+
+.form-text {
+    font-size: 1.2rem;
+}
+
+form button {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+form button:hover {
+    cursor: pointer;
+}
+
+.message-grid {
+    padding: 20px 0;
+}
+
+.message-grid h3 {
+    font-weight: bold;
+    font-size: 1.7rem;
+    padding-bottom: 8px;
+    padding-top: 10px;
+}
+
+.message-grid [class*="message-box"] {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 8px;
+    position: relative;
+}
+
+.message-box h4 {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.7rem;
+    padding-bottom: 10px;
+}
+
+.message-box p {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 35px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.message-box img {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.message-box img:hover {
+    cursor: pointer;
+}
+
+.older-messages {
+    width: 100%;
+    padding-top: 50px;
+}
+
+.older-messages .message-box {
+    width: 49%;
+}

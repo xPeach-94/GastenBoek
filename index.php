@@ -60,22 +60,7 @@ ini_set('display_errors', 1);
     }
     ?>
   <?php
-$file2 = file_get_contents("guests.js");
 
-// Probeer de JSON-gegevens te decoderen
-$jsonData = json_decode($file2, true);
-
-if ($jsonData !== null) {
-    // Zet de gegevens om naar een geformatteerde JSON-string
-    $prettyJson = json_encode($jsonData, JSON_PRETTY_PRINT);
-
-    // Geef de geformatteerde JSON-gegevens weer
-    echo "<pre>";
-    echo $prettyJson;
-    echo "</pre>";
-} else {
-    echo "Fout bij het decoderen van de JSON-gegevens.";
-}
 ?>
 
 </body>
