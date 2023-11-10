@@ -1,11 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-
-// functie file wegschrijven
-// functie file ophalen
-// functie verwijderen
-
-$messageArr = [];
+// ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -17,10 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Please enter both name and message.";
     }
 }
-
-// echo "<pre>";
-// var_dump(file_get_contents("guests.txt"));
-// echo "</pre>";
 
 class Message
 {
@@ -71,16 +61,37 @@ function writeFile($name, $message)
         );
     }
 
-    $newArr = array_merge($currentMessageArray, $messageArray);
+    if (!empty($currentMessageArray)) {
+        $newArr = array_merge($messageArray, $currentMessageArray);
+    } else {
+        $newArr = $messageArray;
+    }
 
     $jsonMessages = json_encode($newArr, JSON_PRETTY_PRINT);
 
     file_put_contents('guests.txt', $jsonMessages);
-
-    // echo "<pre>";
-    // var_dump($currentMessageArray, $messageArray);
-    // echo "</pre>";
 }
+
+function readFileJson()
+{
+    $messagesString = file_get_contents("guests.txt");
+    $messageArr = json_decode($messagesString, true);
+
+    return $messageArr;
+}
+
+function showMessage($index, $isName, $isMessage)
+{
+    $messageArr = readFileJson();
+    $currentMessage = $messageArr[$index];
+    if ($isName) {
+        return $currentMessage["name"];
+    } elseif ($isMessage) {
+        return $currentMessage["message"];
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +109,18 @@ function writeFile($name, $message)
     <meta name="description" content="XAMPP is an easy to install Apache distribution containing MariaDB, PHP and Perl." />
     <meta name="keywords" content="xampp, apache, php, perl, mariadb, open source distribution" />
 
-    <link href="stylsheets/normalize.css" rel="stylesheet" type="text/css" />
+    <!-- This will load in the styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+
+    <!-- The Favicon code -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- <link href="../dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" /> -->
     <link href="..//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -108,16 +130,66 @@ function writeFile($name, $message)
 </head>
 
 <body>
-    <form method="post">
-        <h1>Naam:</h1>
-        <input type="text" name="name" id="name">
+    <div class="container">
+        <header>
+            <h1>gastenboek</h1>
+        </header>
+        <div class="divider"></div>
+        <div class="main-content">
+            <div class="message-form">
+                <h2>Schrijf hier uw naam en bericht</h2>
+                <form action="" method="POST">
+                    <div class="form-group mt-3">
+                        <input class="form-control form-control-lg" type="text" name="name" value="" placeholder="Naam:">
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control form-control-lg" name="message"></textarea>
+                        <div class="form-text">
+                            <h5>Het bericht mag maar maximaal 500 characters bevatten.</h5>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit" name="add">Toevoegen</button>
+                </form>
+            </div>
+            <div class="divider"></div>
+            <div class="message-grid">
+                <div class="latest-message">
+                    <h3>Meest recente bericht</h3>
+                    <div class="message-box">
 
-        <h1>Bericht:</h1>
-        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                        <h4><?= showMessage(0, true, false); ?></h4>
+                        <p><?= showMessage(0, false, true);?></p>
 
-        <button type="submit">Submit</button>
-    </form>
+                    </div>
+
+                </div>
+                <div>
+                    <h3 style="margin-top: 50px">Oudere berichten</h3>
+                    <div class="flex">
+                        
+                        <?php
+                        $messageArr = readFileJson();
+
+                        for ($i = 1; $i < count($messageArr); $i++) {
+                            echo "<div class='message-box'>";
+
+                            echo "<h4>";
+                            echo showMessage($i, true, false);
+                            echo "</h4>";
+
+                            echo "<p>";
+                            echo showMessage($i, false, true);
+                            echo "</p>";
+
+                            echo "</div>";
+                        }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 
 </html>
