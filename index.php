@@ -13,6 +13,7 @@
     
         if (!empty($name) && !empty($message)) {
             writeFile($name, $message);
+            
         } else {
             echo "Please enter both name and message.";
         }
@@ -87,7 +88,28 @@
         // echo "</pre>";
     }
 
-    
+    function readFile2()
+    {
+        $messagesString = file_get_contents("guests.txt");
+        $messageArr = json_decode($messagesString, true);
+
+        return $messageArr;
+    }
+
+function showMessage($index, $isName, $isMessage)
+{
+    $messageArr = readFile2();
+    $currentMessage= $messageArr[$index];
+    if ($isName) {
+    return $currentMessage["name"];
+}
+
+elseif($isMessage){
+    return $currentMessage["message"];
+}
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -149,26 +171,56 @@
                 <div class="message-grid">
                     <div class="latest-message">
                         <h3>Meest recente bericht</h3>
+<<<<<<< HEAD
                         <!-- <div class="message-box">
                             <h4>Dominick</h4>
+=======
+                        <div class="message-box">
+                            <h4><?= showMessage(0, true, false); ?></h4>
+>>>>>>> 2558ae7d1298668a1fb52ead623da40c12ab622a
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi perspiciatis magni hic aperiam animi cum sunt amet eveniet 
-                                quidem a, reprehenderit dolorem cumque dicta! Molestiae aperiam rem vitae nam possimus a unde adipisci quo aut optio. 
-                                Aut libero blanditiis, omnis aperiam nobis expedita voluptatibus officiis, facilis, eum impedit tenetur laboriosam. 
-                                Facilis est voluptatibus commodi a eum exercitationem et. Excepturi aperiam dolore dolorum illo unde maxime harum. Saepe, 
-                                consequatur provident sint repellendus eaque voluptatum error praesentium soluta tempora cum eum dicta earum magnam ut 
-                                vel amet fugit laudantium doloribus vitae nihil veritatis sapiente? Commodi minima voluptatem ad voluptas consectetur 
-                                aliquam numquam iste blanditiis! Illum consequuntur animi nulla, accusamus neque tenetur nostrum, ipsam commodi amet 
-                                placeat earum temporibus ab magnam dolore in sint officia necessitatibus magni iure! Quam perferendis facilis fuga 
-                                suscipit! Optio adipisci veritatis animi nemo provident molestias voluptas perferendis voluptatem vero, deserunt alias 
-                                ipsum blanditiis culpa eligendi consectetur. Itaque, modi. Unde voluptatum placeat at sed asperiores?
+                                <?= showMessage(0, false, true);
+                                 ?>
                             </p>
+<<<<<<< HEAD
                             <img src="images/delete.png" alt="delete">
                         </div> -->
+=======
+                            
+                        </div>
+                        
+>>>>>>> 2558ae7d1298668a1fb52ead623da40c12ab622a
                     </div>
-                    <div class="older-messages">
-                        <h3>Oudere berichten</h3>
+                    <div >
+                        <h3 style="margin-top: 50px">Oudere berichten</h3>
                         <div class="flex">
+<<<<<<< HEAD
+=======
+                            <?php
+                            $messageArr = readFile2();
+
+                            for($i=1; $i< count($messageArr); $i++){
+                               echo "<div class='message-box'>";
+
+                               echo "<h4>";
+                               echo showMessage($i, true, false);
+                               
+
+                               echo "</h4>";
+
+                               echo "<p>";
+
+                               echo showMessage($i, false, true);
+
+                               echo "</p>";
+
+                               echo "</div>";
+                        
+                            }
+                            ?>
+
+                            
+>>>>>>> 2558ae7d1298668a1fb52ead623da40c12ab622a
                             <!-- <div class="message-box">
                                 <h4>Sabrina</h4>
                                 <p>
@@ -180,8 +232,8 @@
                                     eaque tempora ad minus atque nobis dignissimos nostrum dicta, perferendis ducimus sapiente.
                                 </p>
                                 <img src="images/delete.png" alt="delete">
-                            </div>
-                            <div class="message-box">
+                            </div> -->
+                            <!-- <div class="message-box">
                                 <h4>Mohammed</h4>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias optio quas voluptatem eligendi delectus iure sit! 
@@ -194,8 +246,13 @@
                                     iusto natus tenetur amet laborum harum modi minima! Fugiat praesentium error libero culpa fuga? Quo magni quaerat 
                                     eligendi quae ratione ea.
                                 </p>
+<<<<<<< HEAD
                                 <img src="images/delete.png" alt="delete"> -->
                             </div>
+=======
+                                <img src="images/delete.png" alt="delete">
+                            </div> -->
+>>>>>>> 2558ae7d1298668a1fb52ead623da40c12ab622a
                         </div>
                     </div>
                 </div>
