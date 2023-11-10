@@ -86,6 +86,8 @@
         // var_dump($currentMessageArray, $messageArray);
         // echo "</pre>";
     }
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -132,10 +134,10 @@
                     <h2>Schrijf hier uw naam en bericht</h2>
                     <form action="" method="POST">
                         <div class="form-group mt-3">
-                            <input class="form-control form-control-lg" type="text" name="name" value="{name}" placeholder="Naam:">
+                            <input class="form-control form-control-lg" type="text" name="name" value="" placeholder="Naam:">
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control form-control-lg" name="message">{message}</textarea>
+                            <textarea class="form-control form-control-lg" name="message"></textarea>
                             <div class="form-text">
                                 <h5>Het bericht mag maar maximaal 500 characters bevatten.</h5>
                             </div>
@@ -147,7 +149,7 @@
                 <div class="message-grid">
                     <div class="latest-message">
                         <h3>Meest recente bericht</h3>
-                        <div class="message-box">
+                        <!-- <div class="message-box">
                             <h4>Dominick</h4>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi perspiciatis magni hic aperiam animi cum sunt amet eveniet 
@@ -162,12 +164,12 @@
                                 ipsum blanditiis culpa eligendi consectetur. Itaque, modi. Unde voluptatum placeat at sed asperiores?
                             </p>
                             <img src="images/delete.png" alt="delete">
-                        </div>
+                        </div> -->
                     </div>
                     <div class="older-messages">
                         <h3>Oudere berichten</h3>
                         <div class="flex">
-                            <div class="message-box">
+                            <!-- <div class="message-box">
                                 <h4>Sabrina</h4>
                                 <p>
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ad at suscipit distinctio, nesciunt molestiae excepturi? 
@@ -192,7 +194,7 @@
                                     iusto natus tenetur amet laborum harum modi minima! Fugiat praesentium error libero culpa fuga? Quo magni quaerat 
                                     eligendi quae ratione ea.
                                 </p>
-                                <img src="images/delete.png" alt="delete">
+                                <img src="images/delete.png" alt="delete"> -->
                             </div>
                         </div>
                     </div>
