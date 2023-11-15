@@ -1,58 +1,22 @@
 [
     {
-        "name": "xdgnn",
-        "message": "srmrmy"
+        "name": "sabrina",
+        "message": "hoi dit is mijn bericht\r\n"
     },
     {
-        "name": "xdgnn",
-        "message": "srmrmy"
+        "name": "Doe",
+        "message": "Elk nieuwste bericht staat weer bovenaan.\r\nZo zie je snel de nieuwste berichten. :)"
     },
     {
-        "name": "xdgnn",
-        "message": "srmrmy"
+        "name": "Jane",
+        "message": "Dit is het derde bericht."
     },
     {
-        "name": "xdgnn",
-        "message": "srmrmy"
+        "name": "John",
+        "message": "Dit is het tweede bericht."
     },
     {
-        "name": "xdgnn",
-        "message": "srmrmy"
-    },
-    {
-        "name": "xdgnn",
-        "message": "srmrmy"
-    },
-    {
-        "name": "xdgnn",
-        "message": "srmrmy"
-    },
-    {
-        "name": "etasrtn",
-        "message": "srrymn"
-    },
-    {
-        "name": "third",
-        "message": "agawnirwajub"
-    },
-    {
-        "name": "third",
-        "message": "agawnirwajub"
-    },
-    {
-        "name": "third",
-        "message": "agawnirwajub"
-    },
-    {
-        "name": "secon",
-        "message": "agrnaigllarg"
-    },
-    {
-        "name": "first",
-        "message": "ejfgreibger"
-    },
-    {
-        "name": "Dominick",
-        "message": "Dit is een testbericht"
+        "name": "Sabrina",
+        "message": "Dit is het eerste bericht. :)"
     }
 ]

@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($name) && !empty($message)) {
         writeFile($name, $message);
     } else {
-        echo "Please enter both name and message.";
+        echo "Vul beide je naam en bericht in aub.";
     }
 }
 
@@ -91,6 +91,12 @@ function showMessage($index, $isName, $isMessage)
     }
 }
 
+function showMessageBox($id) {
+    return '<div class="message-box">
+            <h4>'.showMessage($id, true, false).'</h4>
+            <p>'.showMessage($id, false, true).'</p>
+    </div>';
+}
 
 ?>
 
@@ -171,17 +177,7 @@ function showMessage($index, $isName, $isMessage)
                         $messageArr = readFileJson();
 
                         for ($i = 1; $i < count($messageArr); $i++) {
-                            echo "<div class='message-box'>";
-
-                            echo "<h4>";
-                            echo showMessage($i, true, false);
-                            echo "</h4>";
-
-                            echo "<p>";
-                            echo showMessage($i, false, true);
-                            echo "</p>";
-
-                            echo "</div>";
+                            echo showMessageBox($i);
                         }
                         ?>
 
